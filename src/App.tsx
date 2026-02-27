@@ -1,7 +1,6 @@
-import { GitHubBanner, Refine } from "@refinedev/core";
+import { Refine } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-
 import { BrowserRouter, Route, Routes, Outlet } from "react-router";
 import routerProvider, {
   UnsavedChangesNotifier,
@@ -21,7 +20,6 @@ import SubjectCreate from "./pages/subjects/create";
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ThemeProvider>
           <DevtoolsProvider>
@@ -61,7 +59,6 @@ function App() {
                     <Route index element={<SubjectList />} />
                     <Route path="create" element={<SubjectCreate />} />
                   </Route>
-
                 </Route>
               </Routes>
               <Toaster />
