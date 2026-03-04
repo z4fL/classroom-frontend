@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm } from "@refinedev/react-hook-form";
 import { useBack } from "@refinedev/core";
 
 import { classSchema } from "@/lib/schema";
@@ -10,7 +10,6 @@ import { CreateView } from "@/components/refine-ui/views/create-view";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -93,18 +92,18 @@ const Create = () => {
     }
   };
 
-  const bannerPublicId = form.watch("banneCldPubId");
+  const bannerPublicId = form.watch("bannerCldPubId");
 
-  const setBannerImage = (field, file) => {
+  const setBannerImage = (field: any, file: any) => {
     if (file) {
       field.onChange(file.url);
-      form.setValue("banneCldPubId", file.publicId, {
+      form.setValue("bannerCldPubId", file.publicId, {
         shouldValidate: true,
         shouldDirty: true,
       });
     } else {
       field.onChange("");
-      form.setValue("banneCldPubId", "", {
+      form.setValue("bannerCldPubId", "", {
         shouldValidate: true,
         shouldDirty: true,
       });
@@ -151,15 +150,15 @@ const Create = () => {
                               { url: field.value, publicId: bannerPublicId ?? "" }
                             : null
                           }
-                          onChange={(field: any, file: any) =>
+                          onChange={(file: any) =>
                             setBannerImage(field, file)
                           }
                         />
                       </FormControl>
                       <FormMessage />
-                      {errors.banneCldPubId && !errors.bannerUrl && (
+                      {errors.bannerCldPubId && !errors.bannerUrl && (
                         <p className="text-destructive text-sm">
-                          {errors.banneCldPubId.message?.toString()}
+                          {errors.bannerCldPubId.message?.toString()}
                         </p>
                       )}
                     </FormItem>
